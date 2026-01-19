@@ -8,7 +8,6 @@ namespace Fsi.Currencies.Settings
         where TID : Enum
         where TData : CurrencyData<TID>
     {
-        // [SettingsProvider]
         public static SettingsProvider CreateSettingsProvider()
         {
             SerializedObject settingsProp = CurrencySettings<TID, TData>.GetSerializedSettings();
