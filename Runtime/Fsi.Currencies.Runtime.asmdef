@@ -2,7 +2,6 @@
     "name": "Fsi.Currency.Runtime",
     "rootNamespace": "Fsi.Currencies",
     "references": [
-        "GUID:343deaaf83e0cee4ca978e7df0b80d21",
         "GUID:2bafac87e7f4b9b418d9448d219b01ab",
         "GUID:ff3151e387f3d42e1b5e8c10871ccc37",
         "GUID:0aede76063b894034a434ed76d1c99ba"
