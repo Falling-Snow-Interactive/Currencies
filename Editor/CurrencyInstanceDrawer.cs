@@ -8,6 +8,24 @@ namespace Fsi.Currencies
     [CustomPropertyDrawer(typeof(CurrencyInstance<,>), true)]
     public class CurrencyInstanceDrawer : PropertyDrawer
     {
+        private static bool IsInListView(VisualElement element)
+        {
+            for (VisualElement current = element; current != null; current = current.parent)
+            {
+                if (current is MultiColumnListView || current is ListView)
+                {
+                    return true;
+                }
+
+                if (current.ClassListContains("unity-collection-view__item"))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
             VisualElement root = new();
@@ -34,6 +52,10 @@ namespace Fsi.Currencies
                 Label label = new(property.displayName);
                 label.AddToClassList("unity-base-field__label");
                 label.AddToClassList("unity-base-field__aligned");
+                label.RegisterCallback<AttachToPanelEvent>(_ =>
+                {
+                    label.style.display = IsInListView(root) ? DisplayStyle.None : DisplayStyle.Flex;
+                });
                 data.Add(label);
             }
 
