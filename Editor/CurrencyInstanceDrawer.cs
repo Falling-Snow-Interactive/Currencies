@@ -16,6 +16,9 @@ namespace Fsi.Currencies
 
             VisualElement data = new();
             data.AddToClassList("fsi-property-row");
+            data.AddToClassList("unity-base-field__aligned");
+            data.style.flexDirection = FlexDirection.Row;
+            data.style.columnGap = 4;
 
             root.Add(data);
             
@@ -34,13 +37,9 @@ namespace Fsi.Currencies
                 data.Add(label);
             }
 
-            IntegerField amountField = new() { label = string.Empty };
-            amountField.BindProperty(amountProp);
+            PropertyField amountField = new(amountProp, string.Empty);
             amountField.AddToClassList("fsi-property-field");
-            amountField.RegisterValueChangedCallback(_ =>
-                                                     {
-                                                         // amountField.label = property.displayName;
-                                                     });
+            amountField.AddToClassList("unity-base-field__aligned");
             
             data.Add(amountField);
             data.Add(currencyField);
