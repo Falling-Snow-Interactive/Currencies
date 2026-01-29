@@ -25,7 +25,16 @@ namespace Fsi.Currencies
             PropertyField currencyField = new(currencyProp);
             currencyField.AddToClassList("fsi-property-field");
             
-            IntegerField amountField = new() { label = property.displayName };
+            bool showLabel = !property.propertyPath.Contains("Array.data[");
+            if (showLabel)
+            {
+                Label label = new(property.displayName);
+                label.AddToClassList("unity-base-field__label");
+                label.AddToClassList("unity-base-field__aligned");
+                data.Add(label);
+            }
+
+            IntegerField amountField = new() { label = string.Empty };
             amountField.BindProperty(amountProp);
             amountField.AddToClassList("fsi-property-field");
             amountField.RegisterValueChangedCallback(_ =>
