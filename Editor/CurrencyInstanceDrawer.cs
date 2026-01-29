@@ -18,7 +18,7 @@ namespace Fsi.Currencies
             data.AddToClassList("fsi-property-row");
             data.AddToClassList("unity-base-field__aligned");
             data.style.flexDirection = FlexDirection.Row;
-            data.style.columnGap = 4;
+            // data.style.columnGap = 4;
 
             root.Add(data);
             
