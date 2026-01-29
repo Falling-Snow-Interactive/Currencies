@@ -30,7 +30,7 @@ namespace Fsi.Currencies
             amountField.AddToClassList("fsi-property-field");
             amountField.RegisterValueChangedCallback(_ =>
                                                      {
-                                                         amountField.label = property.displayName;
+                                                         // amountField.label = property.displayName;
                                                      });
             
             data.Add(amountField);
