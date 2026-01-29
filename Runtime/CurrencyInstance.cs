@@ -1,4 +1,6 @@
 using System;
+using Fsi.DataSystem.Libraries;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Fsi.Currencies
@@ -9,11 +11,11 @@ namespace Fsi.Currencies
 	{
 		public event Action Changed;
 		
-		[HideInInspector]
+		[HideInInspector, UsedImplicitly]
 		[SerializeField]
 		private string name;
 
-		[CurrencyLibrary]
+		[CurrencyLibrary, HideLabel]
 		[SerializeField]
 		private TCurrency currency;
 		public TCurrency Currency
