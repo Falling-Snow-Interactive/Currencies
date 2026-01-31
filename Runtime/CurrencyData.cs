@@ -2,7 +2,7 @@ using Fsi.DataSystem;
 
 namespace Fsi.Currencies
 {
-    public class CurrencyData<T> : ScriptableData<T>
+    public abstract class CurrencyData<T> : ScriptableData<T>
     {
         
     }
