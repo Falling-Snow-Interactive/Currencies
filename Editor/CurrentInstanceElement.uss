@@ -1,8 +1,8 @@
-.currency {
+.currency_instance_element__root {
     flex-direction: row;
 }
 
-.currency_label {
+.currency_instance_element__label {
     flex-grow: 1;
     flex-shrink: 0;
     
@@ -11,7 +11,7 @@
     margin-left: 2px;
 }
 
-.currency_value {
+.currency_instance_element__property {
     flex-grow: 1;
     flex-shrink: 0;
     flex-direction: row;
@@ -19,7 +19,7 @@
     width: 60%;
 }
 
-.currency_amount {
+.currency_instance_element__amount {
     flex-grow: 1;
     flex-shrink: 0;
     
@@ -28,7 +28,7 @@
     padding-right: 5px;
 }
 
-.currency_data {
+.currency_instance_element__data {
     flex-grow: 1;
     flex-shrink: 0;
     
