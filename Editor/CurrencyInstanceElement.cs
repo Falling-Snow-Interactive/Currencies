@@ -15,7 +15,6 @@ namespace Fsi.Currencies
         private const string FieldClass = "currency_instance_element__property";
         private const string FieldAmountClass = "currency_instance_element__amount";
         private const string FieldCurrencyClass = "currency_instance_element__data";
-        private const string FieldSpacerClass = "field_space";
 
         #endregion
         

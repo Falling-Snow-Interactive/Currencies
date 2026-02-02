@@ -1,11 +1,10 @@
 using System;
-using Fsi.Ui.Headers;
 using UnityEditor;
 using UnityEngine;
 
 namespace Fsi.Currencies.Settings
 {
-    public class CurrencySettings<TID, TData> : ScriptableObject
+	public class CurrencySettings<TID, TData> : ScriptableObject
 		where TID : Enum
 		where TData : CurrencyData<TID>
 	{
