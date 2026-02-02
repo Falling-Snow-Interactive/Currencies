@@ -8,6 +8,8 @@ namespace Fsi.Currencies
     [CustomPropertyDrawer(typeof(CurrencyInstance<,>), true)]
     public class CurrencyInstanceDrawer : PropertyDrawer
     {
+        private const string USS = "Packages/com.fallingsnowinteractive.currencies/Editor/CurrentInstanceDrawer.uss";
+        
         private static bool IsInListView(VisualElement element)
         {
             for (VisualElement current = element; current != null; current = current.parent)
@@ -29,41 +31,39 @@ namespace Fsi.Currencies
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
             VisualElement root = new();
-            root.AddToClassList("fsi-property-row");
+            
+            StyleSheet stylesheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(USS);
+            if (stylesheet)
+            {
+                root.styleSheets.Add(stylesheet);
+            }
+            
+            root.AddToClassList("currency");
             FsiUiEditorUtility.AddUss(root);
-
-            VisualElement data = new();
-            data.AddToClassList("fsi-property-row");
-            data.AddToClassList("unity-base-field__aligned");
-            data.style.flexDirection = FlexDirection.Row;
-            // data.style.columnGap = 4;
-
-            root.Add(data);
             
             SerializedProperty currencyProp = property.FindPropertyRelative("currency");
             SerializedProperty amountProp = property.FindPropertyRelative("amount");
+            
+            Label label = new(property.displayName);
+            label.AddToClassList("currency_label");
+            label.RegisterCallback<AttachToPanelEvent>(_ =>
+                                                       {
+                                                           label.style.display = IsInListView(root) 
+                                                                                     ? DisplayStyle.None 
+                                                                                     : DisplayStyle.Flex;
+                                                       });
+            root.Add(label);
+            
+            VisualElement data = new();
+            data.AddToClassList("currency_value");
+            root.Add(data);
+            
+            PropertyField amountField = new(amountProp, string.Empty);
+            amountField.AddToClassList("currency_amount");
+            data.Add(amountField);
 
             PropertyField currencyField = new(currencyProp);
-            currencyField.AddToClassList("fsi-property-field");
-            
-            bool showLabel = !property.propertyPath.Contains("Array.data[");
-            if (showLabel)
-            {
-                Label label = new(property.displayName);
-                label.AddToClassList("unity-base-field__label");
-                label.AddToClassList("unity-base-field__aligned");
-                label.RegisterCallback<AttachToPanelEvent>(_ =>
-                {
-                    label.style.display = IsInListView(root) ? DisplayStyle.None : DisplayStyle.Flex;
-                });
-                data.Add(label);
-            }
-
-            PropertyField amountField = new(amountProp, string.Empty);
-            amountField.AddToClassList("fsi-property-field");
-            amountField.AddToClassList("unity-base-field__aligned");
-            
-            data.Add(amountField);
+            currencyField.AddToClassList("currency_data");
             data.Add(currencyField);
             
             return root;

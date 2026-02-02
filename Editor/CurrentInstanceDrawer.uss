@@ -1,0 +1,37 @@
+.currency {
+    flex-direction: row;
+}
+
+.currency_label {
+    flex-grow: 1;
+    flex-shrink: 0;
+    
+    width: 40%;
+    
+    margin-left: 2px;
+}
+
+.currency_value {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-direction: row;
+    
+    width: 60%;
+}
+
+.currency_amount {
+    flex-grow: 1;
+    flex-shrink: 0;
+    
+    width: 25%;
+    
+    padding-right: 5px;
+}
+
+.currency_data {
+    flex-grow: 1;
+    flex-shrink: 0;
+    
+    width: 75%;
+}
+
